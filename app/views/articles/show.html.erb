@@ -1,0 +1,59 @@
+<!-- added 1 -->
+
+<h1>Article [<%= @article.id %>] <%= @article.title %></h1>
+
+<p><%= @article.body %></p>
+<!-- end added -->
+
+<!-- added 2 -->
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+
+    <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+<!-- end added -->
+
+<!-- added 3 -->
+<h2>Comments</h2>
+
+<%= render @article.comments %>
+<!-- last line replaces next block -->
+<!-- 
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+-->
+<!-- end added 3 -->
+
+<!-- added 4 -->
+<h2>Add a comment:</h2>
+
+<%= render 'comments/form' %>
+<!-- last line replaces next block -->
+<!-- 
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+-->
+<!-- end added -->
